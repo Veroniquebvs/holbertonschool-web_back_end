@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-from typing import Callable
-
 """ type-annotated function that takes a float as
 argument and returns a function"""
+
+from typing import Callable
 
 
 def make_multiplier(multiplier: float) -> Callable[[float], float]:
