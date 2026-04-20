@@ -7,6 +7,7 @@ from typing import List
 
 index_range = __import__('0-simple_helper_function').index_range
 
+
 class Server:
     """Server class to paginate a database of popular baby names.
     """
@@ -27,8 +28,9 @@ class Server:
         return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
-        assert type(page) == int, "page must be an integer greater than 0"
-        assert type(page_size) == int, "page_size must be an integer greater than 0"
+        assert isinstance(page, int), "page must be an integer greater than 0"
+        assert isinstance(page_size, int), \
+            "page_size must be an integer greater than 0"
 
         assert page > 0, "The page number must be greater than 0"
         assert page_size > 0, "The page size must be greater than 0"
@@ -38,19 +40,18 @@ class Server:
         data = self.dataset()
 
         return data[start:end]
-    
+
     def get_hyper(self, page: int = 1, page_size: int = 10) -> dict:
         data = self.get_page(page, page_size)
         new_page_size = len(data)
         total_pages = math.ceil(len(self.dataset()) / page_size)
 
         result = {
-            "page_size" : new_page_size,
-            "page" : page,
-            "data" : data,
-            "next_page" : page + 1 if page < total_pages else None,
-            "prev_page" : page - 1 if page > 1 else None,
-            "total_pages" : total_pages
+            "page_size": new_page_size,
+            "page": page,
+            "data": data,
+            "next_page": page + 1 if page < total_pages else None,
+            "prev_page": page - 1 if page > 1 else None,
+            "total_pages": total_pages
         }
-
         return result
