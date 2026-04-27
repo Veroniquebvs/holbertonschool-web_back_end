@@ -4,3 +4,4 @@
 ## Python - Async Comprehension
 ## Pagination
 ## NoSQL
+## ES6 Basics
