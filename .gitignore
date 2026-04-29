@@ -19,3 +19,16 @@ babel.config.js
 package-lock.json
 package.json
 nodesource_setup.sh
+
+# NoSQL & Databases
+dump/
+*.dump
+*.sql
+
+# Python (si tu as des projets NoSQL ou back-end qui en utilisent)
+__pycache__/
+venv/
+.venv/
+
+# Dossiers de dépendances (essentiel)
+node_modules/
