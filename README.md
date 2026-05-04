@@ -6,3 +6,4 @@
 ## NoSQL
 ## ES6 Basics
 ## ES6 Classes
+## ES6 Data manipulation
