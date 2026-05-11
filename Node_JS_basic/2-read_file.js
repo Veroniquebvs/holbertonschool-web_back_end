@@ -23,11 +23,9 @@ function countStudents(path) {
     lastList.forEach((field) => {
       const list = fields[field];
       console.log(`Number of students in ${field}: ${list.length}. List: ${list.join(', ')}`);
-    })
-
-  }
-  catch (e) {
+    });
+  } catch (e) {
     throw new Error('Cannot load the database');
   }
-};
+}
 module.exports = countStudents;
