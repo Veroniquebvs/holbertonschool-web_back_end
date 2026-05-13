@@ -1,14 +1,14 @@
-const countStudents = require('./3-read_file_async');
 const http = require('http');
+const countStudents = require('./3-read_file_async');
 
 const app = http.createServer((req, res) => {
   res.setHeader('Content-Type', 'text/plain');
   if (req.url === '/students') {
-    res.write('This is the list of our students\n')
+    res.write('This is the list of our students\n');
 
     let output = '';
     const newLog = console.log;
-    console.log = (msg) => { output += msg + '\n'; };
+    console.log = (msg) => { output += `${msg}\n`; };
 
     countStudents(process.argv[2])
       .then(() => {
