@@ -10,20 +10,22 @@ app.get('/', (req, res) => {
 
 app.get('/students', (req, res) => {
   res.set('Content-Type', 'text/plain');
-  res.write('This is the list of our students');
 
   let output = '';
-  const newLog = console.log;
-  console.log = (msg) => { output += `${msg}\n`; };
+  const originalLog = console.log;
+
+  console.log = (msg) => {
+    output += `${msg}\n`;
+  };
 
   countStudents(process.argv[2])
     .then(() => {
-      console.log = newLog;
-      res.end(output.trim());
+      console.log = originalLog;
+      res.send(`This is the list of our students\n${output.trim()}`);
     })
     .catch((err) => {
-      console.log = newLog;
-      res.end(err.message);
+      console.log = originalLog;
+      res.send(`This is the list of our students\n${err.message}`);
     });
 });
 
